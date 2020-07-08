@@ -52,29 +52,49 @@
             xmlhttp.send("url="+document.getElementById("url").value);
         }
     </script>
+    <style type="text/css">
+        .main{
+            max-width:800px;
+            width:100%;
+            height:360px;
+            background-color:#fff;
+            margin-top: 8%;
+            /*margin:auto;*/
+            /*display:flex;*/
+            flex-wrap:wrap;
+            position:relative;
+            border-radius:12px;
+            align-content:flex-start;
+            overflow:hidden;
+            box-shadow:0 10px 20px rgba(0,0,0,0.1);
+            transition:.3s;
+            z-index: 999999999;
+        }
+    </style>
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <form class="form-inline" name="form1">
-    <table align="center" class="table table-striped table-hover">
+    <table align="center" class="table table-striped table-hover main">
         <tr class="text-center">
-            <th colspan="2"><strong><h3>短域名</h3></strong></th>
+            <th colspan="2" style="vertical-align: middle;"><strong><h3>短域名</h3></strong></th>
         </tr>
         <tr class="text-center">
-            <td  style="vertical-align: middle;">请输入原域名：</td><td><input class="form-control" style="width:25%;" type="text" name="url" id="url"></td>
+            <td  style="vertical-align: middle;">请输入原域名：&nbsp;&nbsp;</td><td style="vertical-align: middle;"><input class="form-control" style="width:45%;" type="text" name="url" id="url"></td>
         </tr>
         <tr class="text-center">
-            <td colspan="2">
+            <td colspan="2" style="vertical-align: middle;">
                 <input class="btn btn-outline-success" type="button" onclick="loadXMLDoc(check())" value="提交">
             </td>
         </tr>
         <tr>
-            <td colspan="2" id="ajaxContent">
+            <td colspan="2" id="ajaxContent" style="vertical-align: middle;">
 
             </td>
         </tr>
     </table>
 </form>
+<iframe class="canvas-bg" scrolling="no" sandbox="allow-scripts allow-same-origin" src="/bk" style="position: absolute;top: 0;width: 100%;height: 100%;border-width: 0;"></iframe>
 <%@ include file="/WEB-INF/pages/footer.jsp"%>
 </body>
 </html>

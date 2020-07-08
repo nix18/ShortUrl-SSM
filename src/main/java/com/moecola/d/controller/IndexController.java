@@ -71,4 +71,8 @@ public class IndexController {
         }
         return "404";
     }
+    @RequestMapping("bk")
+    public String bk(){
+        return "bk";
+    }
 }

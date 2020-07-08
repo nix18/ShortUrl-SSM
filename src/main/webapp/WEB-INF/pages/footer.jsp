@@ -22,10 +22,10 @@
             String songAuther= (String) data.get("songAuther");
             String songurl= (String) data.get("songurl");
         %>
-        <div>
+        <div style="color:white;">
             <%=songname%>&nbsp;|&nbsp;<%=songAuther%>
         </div>
-        <audio id="Audio" controls="controls" autoplay="autoplay">
+        <audio id="Audio" controls="controls" autoplay loop>
             <source src="<%=songurl%>">
             Your browser does not support the audio element.
         </audio>
