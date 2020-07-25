@@ -49,7 +49,7 @@
             }
             xmlhttp.open("POST","/in/do",true);
             xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-            xmlhttp.send("url="+document.getElementById("url").value);
+            xmlhttp.send("url="+encodeURIComponent(document.getElementById("url").value));
         }
     </script>
     <style type="text/css">
