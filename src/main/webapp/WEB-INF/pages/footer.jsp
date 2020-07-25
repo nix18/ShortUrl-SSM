@@ -16,11 +16,16 @@
 <footer class="footer">
     <div class="container"align="center">
         <%
-            JSONObject json=new ReadUrlUtil().readJsonFromUrl("https://music.yuk0.com/api.php?id=158787441");
-            JSONObject data= (JSONObject) json.get("data");
-            String songname= (String) data.get("songname");
-            String songAuther= (String) data.get("songAuther");
-            String songurl= (String) data.get("songurl");
+            String songname = "",songAuther = "",songurl = "";
+            try{
+                JSONObject json=new ReadUrlUtil().readJsonFromUrl("https://music.yuk0.com/api.php?id=158787441");
+                JSONObject data= (JSONObject) json.get("data");
+                songname= (String) data.get("songname");
+                songAuther= (String) data.get("songAuther");
+                songurl= (String) data.get("songurl");
+            }catch (Exception e){
+                System.out.println("获取音乐出错！");
+            }
         %>
         <div style="color:white;">
             <%=songname%>&nbsp;|&nbsp;<%=songAuther%>
