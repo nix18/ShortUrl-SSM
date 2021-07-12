@@ -1,5 +1,8 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ page import="net.sf.json.JSONObject" %>
 <%@ page import="com.moecola.d.utils.ReadUrlUtil" %>
+<%@ page import="com.moecola.d.controller.IndexController" %>
+<%@ page import="com.sun.javafx.util.Logging" %>
 <style type="text/css">
     body{
         position : relative;
@@ -18,13 +21,13 @@
         <%
             String songname = "",songAuther = "",songurl = "";
             try{
-                JSONObject json=new ReadUrlUtil().readJsonFromUrl("https://music.yuk0.com/api.php?id=158787441");
+                JSONObject json=new ReadUrlUtil().readJsonFromUrl("https://music.yuk0.com/topapi.php?top=8");
                 JSONObject data= (JSONObject) json.get("data");
                 songname= (String) data.get("songname");
                 songAuther= (String) data.get("songAuther");
                 songurl= (String) data.get("songurl");
             }catch (Exception e){
-                System.out.println("获取音乐出错！");
+                System.out.println("Get Music Error");
             }
         %>
         <div style="color:white;">

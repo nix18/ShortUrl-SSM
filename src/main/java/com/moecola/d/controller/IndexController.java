@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -67,7 +68,17 @@ public class IndexController {
             System.out.println("获取原域名失败，短域名参数："+s);;
         }
         if(urlout!=null){
-            return "redirect:"+urlout;
+            String urlHead;
+            StringBuilder urlEnd= new StringBuilder();
+            String[] urlGroup = urlout.split("/");
+            urlHead = urlGroup[0]+"//"+urlEncode(urlGroup[2]);
+            for(int i = 3; i<urlGroup.length; i++){
+                if(i==urlGroup.length-1)
+                    urlEnd.append(urlEncode(urlGroup[i]));
+                else
+                    urlEnd.append(urlEncode(urlGroup[i])+"/");
+            }
+            return "redirect:"+ urlHead+"/"+urlEnd;
         }
         return "404";
     }
@@ -75,4 +86,51 @@ public class IndexController {
     public String bk(){
         return "bk";
     }
+
+    public static String urlEncode(String in){
+        String ret = "";
+        try {
+            ret = java.net.URLEncoder.encode(in, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
+    public static String getEncoding(String str) {
+        String encode = "GB2312";
+        try {
+            if (str.equals(new String(str.getBytes(encode), encode))) {
+                String s = encode;
+                return s;
+            }
+        } catch (Exception exception) {
+        }
+        encode = "ISO-8859-1";
+        try {
+            if (str.equals(new String(str.getBytes(encode), encode))) {
+                String s1 = encode;
+                return s1;
+            }
+        } catch (Exception exception1) {
+        }
+        encode = "UTF-8";
+        try {
+            if (str.equals(new String(str.getBytes(encode), encode))) {
+                String s2 = encode;
+                return s2;
+            }
+        } catch (Exception exception2) {
+        }
+        encode = "GBK";
+        try {
+            if (str.equals(new String(str.getBytes(encode), encode))) {
+                String s3 = encode;
+                return s3;
+            }
+        } catch (Exception exception3) {
+        }
+        return "";
+    }
+
 }
