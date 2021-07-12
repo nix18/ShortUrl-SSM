@@ -1,8 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ page import="net.sf.json.JSONObject" %>
 <%@ page import="com.moecola.d.utils.ReadUrlUtil" %>
-<%@ page import="com.moecola.d.controller.IndexController" %>
-<%@ page import="com.sun.javafx.util.Logging" %>
 <style type="text/css">
     body{
         position : relative;
